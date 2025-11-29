@@ -32,7 +32,7 @@ export default function Navbar({ scrollToSection }) {
         </a>
       </div>
 
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li><a onClick={() => scrollToSection('story')}>The Story</a></li>
           <li><a onClick={() => scrollToSection('characters')}>Characters</a></li>
@@ -42,7 +42,7 @@ export default function Navbar({ scrollToSection }) {
         </ul>
       </div>
 
-      <div className="navbar-end">
+      {/* <div className="navbar-end">
         <label className="toggle rounded-none text-base-content">
           <input type="checkbox" value="light" className="theme-controller" />
 
@@ -74,7 +74,7 @@ export default function Navbar({ scrollToSection }) {
             </g>
           </svg>
         </label>
-      </div>
+      </div> */}
     </div>
   );
 }

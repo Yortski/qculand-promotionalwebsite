@@ -5,21 +5,21 @@ export default function About() {
     {
       id: 1,
       title: "Developers",
-      image: "https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp",
+      image: "./DevBGpic.png",
       description:
-        "Our talented developers build and maintain the QCU Land game, ensuring smooth performance and robust features.",
+        "Our developers build and maintain the QCU Land game, ensuring smooth performance and robust features.",
     },
     {
       id: 2,
       title: "Designers",
-      image: "https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp",
+      image: "./DesignerBGpic.png",
       description:
         "The design team creates visually stunning assets and interfaces, crafting an immersive experience for players.",
     },
     {
       id: 3,
       title: "Documentation Team",
-      image: "https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp",
+      image: "./DocumentationBGpic.png",
       description:
         "Our documentation team writes guides, tutorials, and keeps everything clear and accessible for users and developers alike.",
     },
@@ -36,12 +36,12 @@ export default function About() {
   };
 
   return (
-    <section className="p-10 sm:px-6 lg:px-28 min-h-screen text-[#1e1e1e] bg-[#ccc]">
+    <section className="p-10 sm:px-6 lg:px-28 min-h-screen text-white bg-primary/90">
       <h1 className="text-3xl font-bold mb-6">About the Team</h1>
-      <p className="text-md font-semibold text-[#1e1e1e]">Get to know the team behind QCU Land</p>
+      <p className="text-md font-semibold text-white">Get to know the team behind QCU Land</p>
       <div className="divider divider-neutral"></div>
 
-      <div className="relative w-full overflow-hidden rounded-lg mb-8">
+      <div className="relative w-full overflow-hidden rounded-none mb-8">
         <img
           src={slides[currentSlide].image}
           alt={slides[currentSlide].title}

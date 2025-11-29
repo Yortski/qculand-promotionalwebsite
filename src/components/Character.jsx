@@ -1,84 +1,81 @@
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
-import * as THREE from "three";
-
-function ModelViewer({ path, scale = 1, rotation = [0, 0, 0] }) {
-    let gltf = path ? useGLTF(path) : null;
-
-    if (!gltf) {
-        return (
-            <mesh>
-                <boxGeometry args={[1, 1, 1]} />
-                <meshStandardMaterial color="gray" />
-            </mesh>
-        );
-    }
-
-    return (
-        <primitive
-            object={gltf.scene}
-            scale={Array.isArray(scale) ? scale : [scale, scale, scale]}
-            rotation={new THREE.Euler(...rotation)}
-        />
-    );
-}
-
 export default function Characters() {
     const characters = [
         {
-            name: "Ernesto Balagbag",
+            name: "Juan",
             description: "The main protagonist who must restore cybersecurity in QCU.",
-            modelPath: "./qcu_student_1.glb",
-            scale: 0.045,
-            rotation: [0, Math.PI / 4, 0],
+            img: "/JuanPic.png",
         },
         {
             name: "QCU Bee",
             description: "The QCU mascot who guides the player around campus.",
-            modelPath: "./qcu_bee.glb",
-            scale: 0.3,
-            rotation: [0, -Math.PI / 6, 0],
+            img: "/beePic.png",
         },
         {
             name: "Cipher",
-            description: "Shagedi Shagedi Shapopo",
-            modelPath: "./qcu_cipher.glb",
-            scale: 1.4,
-            rotation: [0, Math.PI / 3, 0],
+            description: "A powerful adaptive AI lurking beneath the Shadow Network, orchestrating every malware attack across QCU.",
+            img: "/CipherPic.png",
+        },
+        {
+            name: "Phisher",
+            description: "A deceptive entity that tricks users with fake emails and pages.",
+            img: "/PhisherPic.png",
+        },
+        {
+            name: "Ransomware",
+            description: "A cold, mechanical virus that locks files and demands control.",
+            img: "/RansomwarePic.png",
         },
     ];
 
     return (
-        <section className="bg-[#ccc] p-10 sm:px-6 lg:px-28 pb-30">
-            <h1 className="text-3xl text-[#1e1e1e] font-bold">Game Characters</h1>
-            <p className="text-md text-[#1e1e1e] font-semibold">A showcase of the Game's Characters</p>
-            <div className="divider divider-neutral"></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {characters.map((char, index) => (
-                    <div key={index} className="card bg-base-100 shadow-sm">
-                        
-                        <figure className="h-64 bg-base-200">
-                            <Canvas camera={{ position: [0, 1.5, 3] }}>
-                                <ambientLight intensity={1} />
-                                <directionalLight position={[5, 5, 5]} />
+        <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-16">
+                    <h1 className="text-4xl md:text-5xl font-bold text-[#1e1e1e] mb-4">
+                        Game Characters
+                    </h1>
+                    <p className="text-lg md:text-xl text-[#1e1e1e] font-medium max-w-2xl mx-auto">
+                        Meet the heroes and villains in the battle for QCU's cybersecurity
+                    </p>
+                    <div className="divider divider-primary w-24 mx-auto mt-6"></div>
+                </div>
 
-                                <ModelViewer 
-                                    path={char.modelPath}
-                                    scale={char.scale}
-                                    rotation={char.rotation}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+                    {characters.map((char, idx) => (
+                        <div 
+                            key={idx} 
+                            className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2"
+                        >
+                            <figure className="h-80 bg-linear-to-b from-primary/10 to-secondary/10 p-6 group-hover:from-primary/20 group-hover:to-secondary/20 transition-colors">
+                                <img 
+                                    src={char.img} 
+                                    alt={char.name} 
+                                    className="object-contain h-full w-full transition-transform group-hover:scale-105 duration-300"
                                 />
+                            </figure>
 
-                                <OrbitControls enableZoom={false} />
-                            </Canvas>
-                        </figure>
-
-                        <div className="card-body">
-                            <h2 className="card-title">{char.name}</h2>
-                            <p>{char.description}</p>
+                            <div className="card-body p-6 text-center">
+                                <h2 className="card-title justify-center text-2xl font-bold text-base-content mb-2">
+                                    {char.name}
+                                </h2>
+                                <p className="text-base-content/70 leading-relaxed">
+                                    {char.description}
+                                </p>
+                            </div>
                         </div>
+                    ))}
+                </div>
 
+                <div className="text-center mt-16">
+                    <div className="p-8 max-w-4xl mx-auto">
+                        <h3 className="text-2xl font-bold text-[#1e1e1e] mb-4">
+                            Join the Cybersecurity Battle
+                        </h3>
+                        <p className="text-[#1e1e1e] mb-6 max-w-2xl mx-auto">
+                            Help Juan protect QCU from digital threats and become a cybersecurity hero!
+                        </p>
                     </div>
-                ))}
+                </div>
             </div>
         </section>
     );
